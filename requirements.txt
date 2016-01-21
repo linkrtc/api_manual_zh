@@ -1,5 +1,6 @@
 Sphinx
 recommonmark
 sphinxcontrib-httpdomain
+sphinxcontrib-blockdiag
 sphinxcontrib-seqdiag
 sphinx-autobuild

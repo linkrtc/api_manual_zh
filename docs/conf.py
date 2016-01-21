@@ -389,6 +389,10 @@ def setup(app):
     StandardDomain.initial_data['labels']['routingtable'] = ('http-routingtable', '', u'HTTP 路由表')
     StandardDomain.initial_data['anonlabels']['routingtable'] = ('http-routingtable', u'')
 
+# blockdiag
+extensions.append('sphinxcontrib.blockdiag')
+blockdiag_html_image_format = 'SVG'
+
 # seqdiag
 extensions.append('sphinxcontrib.seqdiag')
 seqdiag_html_image_format = 'SVG'
