@@ -15,8 +15,7 @@
 
 .. blockdiag::
 
-   // Set labels to edges. (short text only)
-   Account <- Project [label = "1 ... n"];
+   Account <- Project [label = "1..n"];
 
 ==========
 WebRTC
@@ -31,4 +30,4 @@ SIP
 blabla...
 
 
-.. _LinkRTC: http://linrtc.com/
+.. _LinkRTC: http://linkrtc.com/

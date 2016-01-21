@@ -16,6 +16,8 @@ LinkRTC API 手册
 
    自述 <readme>
    概念 <concept>
+   呼出过程 <proc_outgoing_call>
+   呼入过程 <proc_incoming_call>
 
    服务器 API <server_api/index>
    客户端 API <client_api/index>
