@@ -6,16 +6,22 @@
 LinkRTC API 手册
 ==================================================
 
-Contents:
+构建时间：|today|
+
+內容目录
+---------
 
 .. toctree::
    :maxdepth: 2
 
+   自述 <readme>
 
 
-Indices and tables
-==================
+
+索引
+-----
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+* :ref:`routingtable`

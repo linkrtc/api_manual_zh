@@ -382,11 +382,11 @@ source_suffix = ['.rst', '.md']
 # sphinxcontrib.httpdomain — Documenting RESTful HTTP APIs Additional Configuration
 extensions.append('sphinxcontrib.httpdomain')
 from sphinx.domains.std import StandardDomain
-http_index_shortname = 'api'
-http_index_localname = "HTTP 路由表"
+http_index_shortname = u'api'
+http_index_localname = u'HTTP 路由表'
 def setup(app):
-    StandardDomain.initial_data['labels']['routingtable'] = ('http-routingtable', '', 'HTTP 路由表')
-    StandardDomain.initial_data['anonlabels']['routingtable'] = ('http-routingtable', '')
+    StandardDomain.initial_data['labels']['routingtable'] = ('http-routingtable', '', u'HTTP 路由表')
+    StandardDomain.initial_data['anonlabels']['routingtable'] = ('http-routingtable', u'')
 
 # seqdiag
 extensions.append('sphinxcontrib.seqdiag')
