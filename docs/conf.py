@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# LinkRTC.com API Manual documentation build configuration file, created by
+# LinkRTC API 说明 documentation build configuration file, created by
 # sphinx-quickstart on Thu Jan 21 10:58:40 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -14,6 +14,14 @@
 
 import sys
 import os
+
+
+# -- ReadTheDocs configuration ------------------------------------------------
+
+# When RTD builds your project,
+# it sets the READTHEDOCS environment variable to the string True.
+# So within your Sphinx conf.py file, you can vary the behavior based on this
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -48,7 +56,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'LinkRTC.com API Manual'
+project = u'LinkRTC API 说明'
 copyright = u'2016, liu xue yan'
 author = u'liu xue yan'
 
@@ -110,7 +118,7 @@ todo_include_todos = False
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'alabaster'
+# html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -224,7 +232,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'LinkRTCcomAPIManual.tex', u'LinkRTC.com API Manual Documentation',
+    (master_doc, 'LinkRTCcomAPIManual.tex', u'LinkRTC API 说明',
      u'liu xue yan', 'manual'),
 ]
 
@@ -254,7 +262,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'linkrtccomapimanual', u'LinkRTC.com API Manual Documentation',
+    (master_doc, 'linkrtccomapimanual', u'LinkRTC API 说明',
      [author], 1)
 ]
 
@@ -268,7 +276,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'LinkRTCcomAPIManual', u'LinkRTC.com API Manual Documentation',
+    (master_doc, 'LinkRTCcomAPIManual', u'LinkRTC API 说明',
      author, 'LinkRTCcomAPIManual', 'One line description of project.',
      'Miscellaneous'),
 ]
@@ -354,3 +362,32 @@ epub_exclude_files = ['search.html']
 
 # If false, no index is generated.
 #epub_use_index = True
+
+
+# -- Markdown configuration ------------------------------------------------
+
+# You can use Markdown and reStructuredText in the same Sphinx project.
+# We support this natively on Read the Docs, and you can do it locally:
+from recommonmark.parser import CommonMarkParser
+
+source_parsers = {
+    '.md': CommonMarkParser,
+}
+
+source_suffix = ['.rst', '.md']
+
+
+# -- Extention configuration ------------------------------------------------
+
+# sphinxcontrib.httpdomain — Documenting RESTful HTTP APIs Additional Configuration
+extensions.append('sphinxcontrib.httpdomain')
+from sphinx.domains.std import StandardDomain
+http_index_shortname = 'api'
+http_index_localname = "HTTP 路由表"
+def setup(app):
+    StandardDomain.initial_data['labels']['routingtable'] = ('http-routingtable', '', 'HTTP 路由表')
+    StandardDomain.initial_data['anonlabels']['routingtable'] = ('http-routingtable', '')
+
+# seqdiag
+extensions.append('sphinxcontrib.seqdiag')
+seqdiag_html_image_format = 'SVG'
