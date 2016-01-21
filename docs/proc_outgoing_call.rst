@@ -15,6 +15,36 @@
   * 被叫 `SIP`_ 电话
 
 =========
+状态变化
+=========
+外呼过程中，呼叫的状态有：
+  * `pending`：`LinkRTC`_ 准备进行呼出，但是呼出还没有真正开始的阶段。这是呼叫的开始状态。
+  * `calling`：`LinkRTC`_ 向目标 `SIP`_ 端点发出了 `INVITE` 指令。
+  * `ringing`：目标 `SIP`_ 端点向 `LinkRTC`_ 发出了 `RINGING` 指令。这通常出现在被叫电话振铃的时候。
+  * `confirmed`：目标 `SIP`_ 端点向 `LinkRTC`_ 发出了 `200 OK` 状态码。这通常表示被叫电话接听，双方可以建立通话。
+  * `disconnected`：呼叫失败或者通话结束。这是呼叫的结束状态。
+
+.. blockdiag::
+
+  pending [shape=beginpoint];
+  calling [shape=circle];
+  ringing [shape=circle];
+  confirmed [shape=circle];
+  disconnected [shape=endpoint];
+
+  pending -> calling;
+  pending -> disconnected;
+
+  calling -> ringing;
+  calling -> confirmed;
+  calling -> disconnected;
+
+  ringing -> confirmed;
+  ringing -> disconnected;
+
+  confirmed -> disconnected;
+
+=========
 步骤说明
 =========
 
