@@ -57,8 +57,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'LinkRTC API 说明'
-copyright = u'2016, liu xue yan'
-author = u'liu xue yan'
+copyright = u'2016, LinkRTC.com'
+author = u'刘雪彦'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

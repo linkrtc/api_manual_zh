@@ -2,6 +2,8 @@
 呼出过程
 ###########
 
+.. _label-outgoing-call-def:
+
 =====
 定义
 =====
@@ -45,7 +47,6 @@
 
     dropped -> end
 
-
 =========
 步骤说明
 =========
@@ -77,7 +78,7 @@
   c1; webserver; linkrtc; s1;
 
   c1 -> linkrtc [label="make_call: from=x, to=y, target=s1"];
-  linkrtc -> webserver [label="is the call allowed"];
+  linkrtc -> webserver [label="is the call allowed?"];
   linkrtc <- webserver [label="return: allowed"];
   c1 <- linkrtc [label="return: continue"];
   ... continue ...
@@ -89,7 +90,7 @@
   c1; webserver; linkrtc; s1;
 
   c1 -> linkrtc [label="make_call: from=x, to=y"];
-  linkrtc -> webserver [label="is the call allowed"];
+  linkrtc -> webserver [label="is the call allowed?"];
   linkrtc <- webserver [label="return: refused", color=red];
   c1 <- linkrtc [label="return: refused", color=red];
   ... break ...
@@ -108,33 +109,35 @@
 
   c1; webserver; linkrtc; s1;
 
+  ... continue ...
+
   linkrtc ->> webserver [label="call state: pending"];
   linkrtc ->> c1 [label="call state: pending"];
   linkrtc <<- webserver;
   linkrtc <<- c1;
-  === make sip call actually ===
+
   linkrtc -->> s1 [label="INVITE"];
-  ... wait ...
-  linkrtc <<-- s1 [label="ACK"];
-  === notify ===
   linkrtc ->> webserver [label="call state: calling"];
   linkrtc ->> c1 [label="call state: calling"];
   linkrtc <<- webserver;
   linkrtc <<- c1;
+
   ... wait ...
+
   linkrtc <<-- s1 [label="RINGING"];
-  === notify ===
   linkrtc ->> webserver [label="call state: ringing"];
   linkrtc ->> c1 [label="call state: ringing"];
   linkrtc <<- webserver;
   linkrtc <<- c1;
+
   ... wait for answer ...
+
   linkrtc <<-- s1 [label="OK with SDP"];
-  === notify ===
   linkrtc ->> webserver [label="call state: confirmed(with SDP)"];
   linkrtc ->> c1 [label="call state: confirmed(with SDP)"];
   linkrtc <<- webserver;
   linkrtc <<- c1;
+
   ... continue ...
 
 .. rubric:: SIP 呼叫失败
@@ -143,33 +146,33 @@
 
   c1; webserver; linkrtc; s1;
 
+  ... continue ...
+
   linkrtc ->> webserver [label="call state: pending"];
   linkrtc ->> c1 [label="call state: pending"];
   linkrtc <<- webserver;
   linkrtc <<- c1;
-  === make sip call actually ===
   linkrtc -->> s1 [label="INVITE"];
-  ... wait ...
-  linkrtc <<-- s1 [label="ACK"];
-  === notify ===
   linkrtc ->> webserver [label="call state: calling"];
   linkrtc ->> c1 [label="call state: calling"];
   linkrtc <<- webserver;
   linkrtc <<- c1;
+
   ... wait ...
+
   linkrtc <<-- s1 [label="486 Busy Here", color=red];
-  === notify ===
   linkrtc ->> webserver [label="call state: disconnected", color=red];
   linkrtc ->> c1 [label="call state: disconnected", color=red];
   linkrtc <<- webserver;
   linkrtc <<- c1;
+
   ... break ...
 
 ---------------
 3. 媒体连接
 ---------------
-如果呼叫成功，客户端 `c1` 会收到 :term:`LinkRTC` 转发的对端 :term:`SIP` 终端的 `SDP`_ ，
-`c1` 根据该 `SDP`_ ，使用 :term:`WebRTC` 建立点对点媒体通道。
+如果呼叫成功，客户端 `c1` 会收到 :term:`LinkRTC` 转发的对端 :term:`SIP` 终端的 :term:`SDP` ，
+`c1` 根据该 :term:`SDP` ，使用 :term:`WebRTC` 建立点对点媒体通道。
 
 --------------
 4. 呼叫结束
@@ -184,6 +187,7 @@
 
   c1; webserver; linkrtc; s1;
 
+  ... continue ...
   s1 -->> linkrtc [label="BYE"];
   linkrtc ->> webserver [label="call state: disconnected"];
   linkrtc ->> c1 [label="call state: disconnected"];
@@ -197,6 +201,7 @@
 
   c1; webserver; linkrtc; s1;
 
+  ... continue ...
   c1 -> linkrtc [label="end call"];
   linkrtc -->> s1 [label="BYE"];
   c1 <- linkrtc;

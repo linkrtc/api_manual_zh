@@ -24,6 +24,6 @@
 -------------
 该项目基于 `sphinx-doc`_ 构建，请参考 `sphinx-doc`_ 获知具体的构建步骤。
 
-.. _Read the Docs: http://readthedocs.org/
 .. _LinkRTC: http://linkrtc.com/
+.. _Read the Docs: http://readthedocs.org/
 .. _sphinx-doc: http://www.sphinx-doc.org/

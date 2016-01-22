@@ -3,30 +3,27 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-LinkRTC API 手册
+:term:`LinkRTC` API 说明
 ==================================================
-构建日期：|today|
+| 版本编号: |version|
+| 构建日期: |today|
 
-----
-
-**目录**
+目录
+----------
 
 .. toctree::
-   :maxdepth: 2
+  :maxdepth: 2
 
-   自述 <readme>
-   概念 <concept>
-   呼出过程 <proc_outgoing_call>
-   呼入过程 <proc_incoming_call>
+  自述 <readme>
+  概念 <concept>
+  呼出过程 <proc_outgoing_call>
+  呼入过程 <proc_incoming_call>
+  服务器 API <server_api/index>
+  客户端 API <client_api/index>
+  术语表 <glossary>
 
-   服务器 API <server_api/index>
-   客户端 API <client_api/index>
-
-   术语表 <glossary>
-
-----
-
-**索引**
+索引
+----------
 
 * :ref:`genindex`
 * :ref:`modindex`
