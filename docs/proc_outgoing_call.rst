@@ -6,22 +6,22 @@
 定义
 =====
 呼出过程是指：
-  具有 `WebRTC`_ 功能的浏览器/客户端通过  `LinkRTC`_ 呼叫 `SIP`_ 终端/服务器的过程。
+  具有 :term:`WebRTC` 功能的浏览器/客户端通过 :term:`LinkRTC` 呼叫 :term:`SIP` 终端/服务器的过程。
 
 呼出过程的参与者有：
-  * 具有 `WebRTC`_ 功能的浏览器/客户端
+  * 具有 :term:`WebRTC` 功能的浏览器/客户端
   * 用户的 Web 服务器
-  * `LinkRTC`_ 服务器
-  * 被叫 `SIP`_ 电话
+  * :term:`LinkRTC` 服务器
+  * 被叫 :term:`SIP` 电话
 
 =========
 状态变化
 =========
 外呼过程中，呼叫的状态有：
-  * `pending`：`LinkRTC`_ 准备进行呼出，但是呼出还没有真正开始的阶段。这是呼叫的开始状态。
-  * `calling`：`LinkRTC`_ 向目标 `SIP`_ 端点发出了 `INVITE` 指令。
-  * `ringing`：目标 `SIP`_ 端点向 `LinkRTC`_ 发出了 `RINGING` 指令。这通常出现在被叫电话振铃的时候。
-  * `confirmed`：目标 `SIP`_ 端点向 `LinkRTC`_ 发出了 `200 OK` 状态码。这通常表示被叫电话接听，双方可以建立通话。
+  * `pending`：:term:`LinkRTC` 准备进行呼出，但是呼出还没有真正开始的阶段。这是呼叫的开始状态。
+  * `calling`：:term:`LinkRTC` 向目标 :term:`SIP` 端点发出了 `INVITE` 指令。
+  * `ringing`：目标 :term:`SIP` 端点向 :term:`LinkRTC` 发出了 `RINGING` 指令。这通常出现在被叫电话振铃的时候。
+  * `confirmed`：目标 :term:`SIP` 端点向 :term:`LinkRTC` 发出了 `200 OK` 状态码。这通常表示被叫电话接听，双方可以建立通话。
   * `dropped`：呼叫失败或者通话结束。这是呼叫的结束状态。
 
 .. digraph:: outgoing_call_state
@@ -53,22 +53,22 @@
 以下分步骤说明呼出过程。
 
 在顺序图中：
-  * `c1` 代表：具有 `WebRTC`_ 功能的浏览器/客户端 `c1`
+  * `c1` 代表：具有 :term:`WebRTC` 功能的浏览器/客户端 `c1`
   * `webserver` 代表：用户的 Web 服务器
-  * `linkrtc` 代表：`LinkRTC`_ 服务器
-  * `s1` 代表：被叫 `SIP`_ 端点 `s1`
+  * `linkrtc` 代表：:term:`LinkRTC` 服务器
+  * `s1` 代表：被叫 :term:`SIP` 端点 `s1`
 
 ---------------
 1. 请求呼出
 ---------------
 
-1.1. 客户端 `c1` 向 `LinkRTC`_ 提交呼出请求，在这个请求中，他要求以主叫号码 `x` 、被叫号码 `y` 的名义，向 `SIP`_ 端点 `s1` 发起呼叫。
+1.1. 客户端 `c1` 向 :term:`LinkRTC` 提交呼出请求，在这个请求中，他要求以主叫号码 `x` 、被叫号码 `y` 的名义，向 :term:`SIP` 端点 `s1` 发起呼叫。
 
-1.2. `LinkRTC`_ 收到请求后，询问用户的 Web 服务器是否允许这次呼出。
+1.2. :term:`LinkRTC` 收到请求后，询问用户的 Web 服务器是否允许这次呼出。
 
-  1.2.1. 如果允许： `LinkRTC`_ 继续后续的呼出过程。
+  1.2.1. 如果允许： :term:`LinkRTC` 继续后续的呼出过程。
 
-  1.2.2. 如果拒绝： `LinkRTC`_ 结束此次呼出过程，并通知客户端呼出被拒绝。
+  1.2.2. 如果拒绝： :term:`LinkRTC` 结束此次呼出过程，并通知客户端呼出被拒绝。
 
 .. rubric:: 请求呼出，并被允许
 
@@ -98,9 +98,9 @@
 2. 呼叫 SIP
 ---------------
 
-2.1. `LinkRTC`_ 以主叫号码 `x` 、被叫号码 `y` 的名义，向 `s1` 发起 `SIP`_ 呼叫。
+2.1. :term:`LinkRTC` 以主叫号码 `x` 、被叫号码 `y` 的名义，向 `s1` 发起 :term:`SIP` 呼叫。
 
-2.2. `LinkRTC`_ 将呼叫状态的变化 **同时** 通知 客户端 `c1` 和 用户的 Web 服务器，直到呼叫建立或者失败。
+2.2. :term:`LinkRTC` 将呼叫状态的变化 **同时** 通知 客户端 `c1` 和 用户的 Web 服务器，直到呼叫建立或者失败。
 
 .. rubric:: SIP 呼叫成功
 
@@ -168,17 +168,17 @@
 ---------------
 3. 媒体连接
 ---------------
-如果呼叫成功，客户端 `c1` 会收到 `LinkRTC`_ 转发的对端 `SIP`_ 终端的 `SDP`_ ，
-`c1` 根据该 `SDP`_ ，使用 `WebRTC`_ 建立点对点媒体通道。
+如果呼叫成功，客户端 `c1` 会收到 :term:`LinkRTC` 转发的对端 :term:`SIP` 终端的 `SDP`_ ，
+`c1` 根据该 `SDP`_ ，使用 :term:`WebRTC` 建立点对点媒体通道。
 
 --------------
 4. 呼叫结束
 --------------
-`SIP`_ 终端 `s1` 向 `LinkRTC`_ 发送 `SIP`_ `BYE` 指令；或者 `c1` 向 `LinkRTC`_ 发结束命令，都会导致呼叫的结束。
+:term:`SIP` 终端 `s1` 向 :term:`LinkRTC` 发送 :term:`SIP` `BYE` 指令；或者 `c1` 向 :term:`LinkRTC` 发结束命令，都会导致呼叫的结束。
 
-当 `s1` 主动结束呼叫时， `LinkRTC`_ 会将通话状态变化 **同时** 通知 `c1` 和 用户的 Web 服务器。
+当 `s1` 主动结束呼叫时， :term:`LinkRTC` 会将通话状态变化 **同时** 通知 `c1` 和 用户的 Web 服务器。
 
-.. rubric:: `SIP`_ 一方结束呼叫
+.. rubric:: :term:`SIP` 一方结束呼叫
 
 .. seqdiag::
 
@@ -191,7 +191,7 @@
   linkrtc <<- c1;
   s1 <<-- linkrtc [label="ACK"];
 
-.. rubric:: `WebRTC`_ 一方结束呼叫
+.. rubric:: :term:`WebRTC` 一方结束呼叫
 
 .. seqdiag::
 
@@ -203,8 +203,3 @@
   linkrtc ->> webserver [label="call state: disconnected"];
   linkrtc <<- webserver;
   linkrtc <<-- s1 [label="ACK"];
-
-.. _LinkRTC: http://linkrtc.com/
-.. _WebRTC: http://webrtc.org/
-.. _SIP: http://www.ietf.org/rfc/rfc3261.txt
-.. _SDP: http://www.ietf.org/rfc/rfc2327.txt

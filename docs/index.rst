@@ -22,6 +22,8 @@ LinkRTC API 手册
    服务器 API <server_api/index>
    客户端 API <client_api/index>
 
+   术语表 <glossary>
+
 ----
 
 **索引**
