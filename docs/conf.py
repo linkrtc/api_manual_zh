@@ -380,6 +380,10 @@ source_suffix = ['.rst', '.md']
 
 # -- Extention configuration ------------------------------------------------
 
+# sphinx.ext.graphviz – Add Graphviz graphs
+extensions.append('sphinx.ext.graphviz')
+graphviz_output_format = 'svg'
+
 # sphinxcontrib.httpdomain — Documenting RESTful HTTP APIs Additional Configuration
 extensions.append('sphinxcontrib.httpdomain')
 from sphinx.domains.std import StandardDomain
