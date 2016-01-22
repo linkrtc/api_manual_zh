@@ -31,7 +31,7 @@
     begin [shape=point]
     end [shape=doublecircle]
 
-    begin -> pending [labeld="呼入"]
+    begin -> pending [label="呼入"]
 
     pending -> calling [label="确定了目标客户端"]
     pending -> dropped [label="呼叫禁止"]
@@ -80,7 +80,7 @@
 
   s1 -->> linkrtc [label="INVITE"];
   s1 <<-- linkrtc [label="TRYING"];
-  linkrtc -> webserver [label="incomming_call: to whom?"];
+  linkrtc -> webserver [label="incoming_call: to whom?"];
   linkrtc <- webserver [label="return: to 'c1'"];
   ... continue ...
 
@@ -92,7 +92,7 @@
 
   s1 -->> linkrtc [label="INVITE"];
   s1 <<-- linkrtc [label="TRYING"];
-  linkrtc -> webserver [label="incomming_call: to whom?"];
+  linkrtc -> webserver [label="incoming_call: to whom?"];
   linkrtc <- webserver [label="return: refused!", color=red];
   s1 <<-- linkrtc [label="403 Forbidden", color=red];
   ... break ...
@@ -122,11 +122,11 @@
   ... continue ...
   s1 -->> linkrtc [label="INVITE: from='x', to='y'"];
   s1 <<-- linkrtc [label="TRYING"];
-  linkrtc -->> webserver [label="notify: incomming call(from='x', to='y')"];
+  linkrtc -->> webserver [label="notify: incoming call(from='x', to='y')"];
   ... wait ...
   linkrtc <<-- webserver [label="notify: switch the call to 'c1'"];
   linkrtc -->> webserver [label="notify: state=calling"];
-  linkrtc -->> c1 [label="incomming call: from='x', to='y'"];
+  linkrtc -->> c1 [label="incoming call: from='x', to='y'"];
   linkrtc <<-- webserver;
   ... wait ...
   linkrtc <<-- c1 [label="return: accept"];
@@ -143,11 +143,11 @@
   ... continue ...
   s1 -->> linkrtc [label="INVITE: from='x', to='y'"];
   s1 <<-- linkrtc [label="TRYING"];
-  linkrtc -->> webserver [label="notify: incomming call(from='x', to='y')"];
+  linkrtc -->> webserver [label="notify: incoming call(from='x', to='y')"];
   ... wait ...
   linkrtc <<-- webserver [label="notify: switch the call to 'c1'"];
   linkrtc -->> webserver [label="notify: state=calling"];
-  linkrtc -->> c1 [label="incomming call: from='x', to='y'", failed, color=red];
+  linkrtc -->> c1 [label="incoming call: from='x', to='y'", failed, color=red];
   linkrtc <<-- webserver;
   linkrtc -->> webserver [label="notify: state=dropped"];
   s1 <<-- linkrtc [label="480 Temporarily Unavailable", color=red];
