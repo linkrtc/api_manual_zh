@@ -14,3 +14,18 @@
 
   SDP
     见 http://www.ietf.org/rfc/rfc2327.txt
+
+  HTTP 1.1
+    见 http://www.w3.org/Protocols/rfc2616/rfc2616.html
+
+  HTTPS
+    见 http://en.wikipedia.org/wiki/HTTPS
+
+  UTF-8
+    见 http://en.wikipedia.org/wiki/UTF-8
+
+  JSON
+    见 http://www.json.org/
+
+  Restful
+    见 http://en.wikipedia.org/wiki/Representational_state_transfer

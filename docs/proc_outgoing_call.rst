@@ -12,7 +12,7 @@
 
 呼出过程的参与者有：
   * 具有 :term:`WebRTC` 功能的浏览器/客户端
-  * 用户的 Web 服务器
+  * 用户应用服务程序
   * :term:`LinkRTC` 服务器
   * 被叫 :term:`SIP` 电话
 
@@ -55,7 +55,7 @@
 
 在顺序图中：
   * `c1` 代表：具有 :term:`WebRTC` 功能的浏览器/客户端 `c1`
-  * `webserver` 代表：用户的 Web 服务器
+  * `appserver` 代表：用户应用服务程序
   * `linkrtc` 代表：:term:`LinkRTC` 服务器
   * `s1` 代表：被叫 :term:`SIP` 端点 `s1`
 
@@ -65,7 +65,7 @@
 
 1.1. 客户端 `c1` 向 :term:`LinkRTC` 提交呼出请求，在这个请求中，他要求以主叫号码 `x` 、被叫号码 `y` 的名义，向 :term:`SIP` 端点 `s1` 发起呼叫。
 
-1.2. :term:`LinkRTC` 收到请求后，询问用户的 Web 服务器是否允许这次呼出。
+1.2. :term:`LinkRTC` 收到请求后，询问用户应用服务程序是否允许这次呼出。
 
   1.2.1. 如果允许： :term:`LinkRTC` 继续后续的呼出过程。
 
@@ -75,11 +75,11 @@
 
 .. seqdiag::
 
-  c1; webserver; linkrtc; s1;
+  c1; appserver; linkrtc; s1;
 
   c1 -> linkrtc [label="make_call: from=x, to=y, target=s1"];
-  linkrtc -> webserver [label="is the call allowed?"];
-  linkrtc <- webserver [label="return: allowed"];
+  linkrtc -> appserver [label="is the call allowed?"];
+  linkrtc <- appserver [label="return: allowed"];
   c1 <- linkrtc [label="return: continue"];
   ... continue ...
 
@@ -87,11 +87,11 @@
 
 .. seqdiag::
 
-  c1; webserver; linkrtc; s1;
+  c1; appserver; linkrtc; s1;
 
   c1 -> linkrtc [label="make_call: from=x, to=y"];
-  linkrtc -> webserver [label="is the call allowed?"];
-  linkrtc <- webserver [label="return: refused", color=red];
+  linkrtc -> appserver [label="is the call allowed?"];
+  linkrtc <- appserver [label="return: refused", color=red];
   c1 <- linkrtc [label="return: refused", color=red];
   ... break ...
 
@@ -101,41 +101,41 @@
 
 2.1. :term:`LinkRTC` 以主叫号码 `x` 、被叫号码 `y` 的名义，向 `s1` 发起 :term:`SIP` 呼叫。
 
-2.2. :term:`LinkRTC` 将呼叫状态的变化 **同时** 通知 客户端 `c1` 和 用户的 Web 服务器，直到呼叫建立或者失败。
+2.2. :term:`LinkRTC` 将呼叫状态的变化 **同时** 通知 客户端 `c1` 和 用户应用服务程序，直到呼叫建立或者失败。
 
 .. rubric:: SIP 呼叫成功
 
 .. seqdiag::
 
-  c1; webserver; linkrtc; s1;
+  c1; appserver; linkrtc; s1;
 
   ... continue ...
 
-  linkrtc ->> webserver [label="call state: pending"];
+  linkrtc ->> appserver [label="call state: pending"];
   linkrtc ->> c1 [label="call state: pending"];
-  linkrtc <<- webserver;
+  linkrtc <<- appserver;
   linkrtc <<- c1;
 
   linkrtc -->> s1 [label="INVITE"];
-  linkrtc ->> webserver [label="call state: calling"];
+  linkrtc ->> appserver [label="call state: calling"];
   linkrtc ->> c1 [label="call state: calling"];
-  linkrtc <<- webserver;
+  linkrtc <<- appserver;
   linkrtc <<- c1;
 
   ... wait ...
 
   linkrtc <<-- s1 [label="RINGING"];
-  linkrtc ->> webserver [label="call state: ringing"];
+  linkrtc ->> appserver [label="call state: ringing"];
   linkrtc ->> c1 [label="call state: ringing"];
-  linkrtc <<- webserver;
+  linkrtc <<- appserver;
   linkrtc <<- c1;
 
   ... wait for answer ...
 
   linkrtc <<-- s1 [label="OK with SDP"];
-  linkrtc ->> webserver [label="call state: confirmed(with SDP)"];
+  linkrtc ->> appserver [label="call state: confirmed(with SDP)"];
   linkrtc ->> c1 [label="call state: confirmed(with SDP)"];
-  linkrtc <<- webserver;
+  linkrtc <<- appserver;
   linkrtc <<- c1;
 
   ... continue ...
@@ -144,26 +144,26 @@
 
 .. seqdiag::
 
-  c1; webserver; linkrtc; s1;
+  c1; appserver; linkrtc; s1;
 
   ... continue ...
 
-  linkrtc ->> webserver [label="call state: pending"];
+  linkrtc ->> appserver [label="call state: pending"];
   linkrtc ->> c1 [label="call state: pending"];
-  linkrtc <<- webserver;
+  linkrtc <<- appserver;
   linkrtc <<- c1;
   linkrtc -->> s1 [label="INVITE"];
-  linkrtc ->> webserver [label="call state: calling"];
+  linkrtc ->> appserver [label="call state: calling"];
   linkrtc ->> c1 [label="call state: calling"];
-  linkrtc <<- webserver;
+  linkrtc <<- appserver;
   linkrtc <<- c1;
 
   ... wait ...
 
   linkrtc <<-- s1 [label="486 Busy Here", color=red];
-  linkrtc ->> webserver [label="call state: disconnected", color=red];
+  linkrtc ->> appserver [label="call state: disconnected", color=red];
   linkrtc ->> c1 [label="call state: disconnected", color=red];
-  linkrtc <<- webserver;
+  linkrtc <<- appserver;
   linkrtc <<- c1;
 
   ... break ...
@@ -179,19 +179,19 @@
 --------------
 :term:`SIP` 终端 `s1` 向 :term:`LinkRTC` 发送 :term:`SIP` `BYE` 指令；或者 `c1` 向 :term:`LinkRTC` 发结束命令，都会导致呼叫的结束。
 
-当 `s1` 主动结束呼叫时， :term:`LinkRTC` 会将通话状态变化 **同时** 通知 `c1` 和 用户的 Web 服务器。
+当 `s1` 主动结束呼叫时， :term:`LinkRTC` 会将通话状态变化 **同时** 通知 `c1` 和 用户应用服务程序。
 
 .. rubric:: :term:`SIP` 一方结束呼叫
 
 .. seqdiag::
 
-  c1; webserver; linkrtc; s1;
+  c1; appserver; linkrtc; s1;
 
   ... continue ...
   s1 -->> linkrtc [label="BYE"];
-  linkrtc ->> webserver [label="call state: disconnected"];
+  linkrtc ->> appserver [label="call state: disconnected"];
   linkrtc ->> c1 [label="call state: disconnected"];
-  linkrtc <<- webserver;
+  linkrtc <<- appserver;
   linkrtc <<- c1;
   s1 <<-- linkrtc [label="ACK"];
 
@@ -199,12 +199,12 @@
 
 .. seqdiag::
 
-  c1; webserver; linkrtc; s1;
+  c1; appserver; linkrtc; s1;
 
   ... continue ...
   c1 -> linkrtc [label="end call"];
   linkrtc -->> s1 [label="BYE"];
   c1 <- linkrtc;
-  linkrtc ->> webserver [label="call state: disconnected"];
-  linkrtc <<- webserver;
+  linkrtc ->> appserver [label="call state: disconnected"];
+  linkrtc <<- appserver;
   linkrtc <<-- s1 [label="ACK"];
