@@ -1,15 +1,12 @@
-############
 安全
 ############
 
-============
 数据加密
 ============
 用户应用服务程序向 :term:`LinkRTC` 后台发送请求时， **必须** 使用 :term:`HTTPS` 连接。
 
 .. _label-auth:
 
-===========
 身份认证
 ===========
 用户应用服务程序向 :term:`LinkRTC` 发送的请求需要提供 :term:`HTTP Basic Authentication` （`HTTP` 基本认证）信息。
@@ -27,7 +24,6 @@
 如果用户应用服务程序缺少或者没有提供正确 `Authenticate` 信息，
 :term:`LinkRTC` 将返回 `401 Unauthorized` 。
 
-===========
 消息签名
 ===========
 :term:`LinkRTC` 在其向用户应用服务程序发送的 `HTTP` 请求中附加了签名和时间戳。
@@ -60,7 +56,6 @@
 
   "... ..."
 
------------------
 签名算法
 -----------------
 在下面的代码片段中：
@@ -74,7 +69,6 @@
 
 以下几个小节是几种常见语言的签名算法实现代码片段：
 
-``````
 Java
 ``````
 
@@ -117,7 +111,7 @@ Java
             tmpList.add(md5Str(projectSid);
             tmpList.add(md5Str(appSecret);
             tmpList.add(md5Str(timestamp);
-            Collections.sort(tmpList);    
+            Collections.sort(tmpList);
 
             String signature = md5Str(String.join("", tmpList));
 
@@ -129,7 +123,6 @@ Java
 
   }
 
-```````
 NodeJs
 ```````
 .. code-block:: js
@@ -154,7 +147,6 @@ NodeJs
     console.log(`signature = ${signature}`);
   })();
 
-```````
 Php
 ```````
 
@@ -176,7 +168,6 @@ Php
 
   echo('signature = ' . $signature);
 
-```````
 Python
 ```````
 

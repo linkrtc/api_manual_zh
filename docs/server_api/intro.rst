@@ -1,4 +1,3 @@
-##################
 服务器 API 介绍
 ##################
 
@@ -17,7 +16,6 @@
   linkrtc -> userapp [label="HTTP or HTTPS" color=blue fontcolor=blue]
   userapp -> linkrtc [label="force HTTPS" color=green fontcolor=green]
 
-==========
 设计原则
 ==========
 
@@ -29,15 +27,12 @@
 6. 用户应用服务程序向 :term:`LinkRTC` 发送的请求需要通过 :term:`HTTP Basic Authentication` （`HTTP` 基本认证）。
 7. :term:`LinkRTC` 向用户应用服务程序发送的请求带有消息签名。
 
-==========
 格式规范
 ==========
 
---------------
 HTTP 头和内容
 --------------
 
-```````````````
 普通请求与回复
 ```````````````
 `POST` 或 `PUT` 请求、以及回复的正文部分 **必须** 是
@@ -50,7 +45,7 @@ HTTP 头和内容
 
 .. code-block:: http
 
-  POST /client HTTP/1.1
+  POST /WebRtcClient HTTP/1.1
   Host: api.linkrtc.com
   Content-Type: application/json; charset=utf-8
   Content-Length: xxx
@@ -77,7 +72,6 @@ HTTP 头和内容
     "expires": 3600
   }
 
-`````````````
 空请求与回复
 `````````````
 如果 `POST` 、 `PUT` 请求不包含内容，或回复不包含内容，其 `Content-Length` 头域的值应为 `0`，例如：
@@ -97,23 +91,19 @@ HTTP 头和内容
   HTTP/1.1 200 OK
   Content-Length: 0
 
---------------
 HTTP 状态码
 --------------
 
-`````````````
 200 执行成功
 `````````````
 如果API调用成功，被调用方应返回状态码 `200 OK` 。
 
-````````````
 401 未验证
 ````````````
 如果 :term:`LinkRTC` 收到的服务器 `API` 请求中，没有正确的身份验证信息，就返回这个状态码。
 
 参见 :ref:`label-auth`
 
-`````````````
 500 执行失败
 `````````````
 如果服务器在响应API调用期间出现错误，或者出现意料之外的情况，应返回 `500 Internal Server Error`。
@@ -134,7 +124,6 @@ HTTP 状态码
 .. attention::
   :term:`LinkRTC` 后台服务无法在所有情况下都提供 :term:`JSON` 格式错误信息，调用方可以根据 `Content-Type` 进行判断。
 
-`````````````
 其它
 `````````````
 其它 `Status Code` 均遵照 `RFC 2616 <http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html>`_ 的定义
