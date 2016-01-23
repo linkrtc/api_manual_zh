@@ -21,6 +21,9 @@
   HTTPS
     见 http://en.wikipedia.org/wiki/HTTPS
 
+  HTTP Basic Authentication
+    见 https://tools.ietf.org/html/rfc2617
+
   UTF-8
     见 http://en.wikipedia.org/wiki/UTF-8
 

@@ -6,7 +6,7 @@
 
 它们之间的通信以 `HTTP` 的形式在互联网上进行。
 
-:term:`LinkRTC` 与 用户的应用服务程序 **既是HTTP服务器又是客户端** ：
+:term:`LinkRTC` 与 用户的应用服务程序 **既充当 HTTP 服务器又充当 HTTP 客户端** ：
 以客户端的身份向对方发送请求，同时也以服务器的身份接受对方的请求。
 
 .. digraph:: server_http
@@ -26,7 +26,8 @@
 3. 采用 :term:`Restful` 形态的 `Web API`。
 4. 消息提使用 :term:`UTF-8` 编码的 :term:`JSON` 格式文本记录结构化数据。
 5. :term:`LinkRTC` 只接受 :term:`HTTPS` 加密连接； :term:`LinkRTC` 向用户应用程序服务发送请求时允许使用不加密的 `HTTP` 连接。
-6. 对请求消息进行签名验证。
+6. 用户应用服务程序向 :term:`LinkRTC` 发送的请求需要通过 :term:`HTTP Basic Authentication` （`HTTP` 基本认证）。
+7. :term:`LinkRTC` 向用户应用服务程序发送的请求带有消息签名。
 
 ==========
 格式规范
@@ -49,7 +50,7 @@ HTTP 头和内容
 
 .. code-block:: http
 
-  POST /api/account/tom/app/tomsapp/client HTTP/1.1
+  POST /client HTTP/1.1
   Host: api.linkrtc.com
   Content-Type: application/json; charset=utf-8
   Content-Length: xxx
@@ -85,7 +86,7 @@ HTTP 头和内容
 
 .. code-block:: http
 
-  POST /api/account/tom/app/tomsapp/ping HTTP/1.1
+  POST /ping HTTP/1.1
   Host: api.linkrtc.com
   Content-Length: 0
 
@@ -104,6 +105,13 @@ HTTP 状态码
 200 执行成功
 `````````````
 如果API调用成功，被调用方应返回状态码 `200 OK` 。
+
+````````````
+401 未验证
+````````````
+如果 :term:`LinkRTC` 收到的服务器 `API` 请求中，没有正确的身份验证信息，就返回这个状态码。
+
+参见 :ref:`label-auth`
 
 `````````````
 500 执行失败
