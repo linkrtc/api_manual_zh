@@ -7,7 +7,7 @@
    :maxdepth: 2
 
    介绍 <intro>
-   安全 <safty>
+   安全 <safety>
 
 ----
 
