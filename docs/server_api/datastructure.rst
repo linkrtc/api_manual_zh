@@ -13,12 +13,14 @@
 
     是否具备音频能力
 
+    :data type: bool
     :default: ``True``
 
   .. attribute:: video: bool
 
     是否具备视频能力
-
+    
+    :data type: bool
     :default: ``False``
 
 :term:`WebRTC` 客户端
@@ -32,8 +34,8 @@
 
     客户端ID
 
-    :date type: str
+    :data type: str
 
   .. attribute:: capability
 
-    :date type: :class:`MediaCapability`
+    :data type: :class:`MediaCapability`
