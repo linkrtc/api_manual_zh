@@ -13,7 +13,7 @@
 :term:`LinkRTC` 根据认证信息中的用户名和密码对调用者进行身份认证。
 
 例如，某用户在 :term:`LinkRTC` 拥有一个 `SID` 为 ``Project1`` 的 :ref:`项目<label-account-project>` ，
-该项目的访问密码是 ``abc123``，那么，用户应用服务程序发送的 `HTTP` 请求 **必须** 带有正确的 `Authorization` 头：
+该项目的访问密码是 ``abc123``，那么，用户应用服务程序发送的 `HTTP` 请求 **必须** 带有正确的 :http:header:`Authorization` 头：
 
 .. code-block:: http
 
@@ -21,8 +21,8 @@
   Host: api.linkrtc.com
   Authorization: Basic UHJvamVjdDE6YWJjMTIz
 
-如果用户应用服务程序缺少或者没有提供正确 `Authenticate` 信息，
-:term:`LinkRTC` 将返回 `401 Unauthorized` 。
+如果用户应用服务程序缺少或者没有提供正确 :http:header:`Authenticate` 信息，
+:term:`LinkRTC` 将返回 :http:statuscode:`401` 。
 
 消息签名
 ===========
@@ -40,8 +40,8 @@
   3. 计算上一个步骤中得到的新字符串的MD5散列值的十六进制表达式（字母部分大写），即为签名。
 
 签名和Unix时间戳被附加在 `HTTP` 请求的头域中，
-  * 时间戳的头域: `X-LinkRTC-Signature`
-  * 签名的头域: `X-LinkRTC-Timestamp`
+  * 时间戳的头域: :http:header:`X-LinkRTC-Signature`
+  * 签名的头域: :http:header:`X-LinkRTC-Timestamp`
 
 带有签名信息的 `HTTP` 请求形如:
 

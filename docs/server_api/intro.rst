@@ -37,7 +37,7 @@ HTTP 头和内容
 ```````````````
 `POST` 或 `PUT` 请求、以及回复的正文部分 **必须** 是
 采用 :term:`UTF-8` 编码的 :term:`JSON` 格式字符串，
-`Content-Type` 头域的值应是 `application/json`。
+:http:header:`Content-Type` 头域的值应是 `application/json`。
 
 例如：
 
@@ -74,7 +74,8 @@ HTTP 头和内容
 
 空请求与回复
 `````````````
-如果 `POST` 、 `PUT` 请求不包含内容，或回复不包含内容，其 `Content-Length` 头域的值应为 `0`，例如：
+如果 :http:method:`POST` 、 :http:method:`PUT` 请求不包含内容，或回复不包含内容，
+其 :http:header:`Content-Length` 头域的值应为 `0`，例如：
 
 请求：
 
@@ -94,19 +95,19 @@ HTTP 头和内容
 HTTP 状态码
 --------------
 
-200 执行成功
-`````````````
+:http:statuscode:`200`
+````````````````````````
 如果API调用成功，被调用方应返回状态码 `200 OK` 。
 
-401 未验证
-````````````
+:http:statuscode:`401`
+````````````````````````
 如果 :term:`LinkRTC` 收到的服务器 `API` 请求中，没有正确的身份验证信息，就返回这个状态码。
 
 参见 :ref:`label-auth`
 
-500 执行失败
-`````````````
-如果服务器在响应API调用期间出现错误，或者出现意料之外的情况，应返回 `500 Internal Server Error`。
+:http:statuscode:`500`
+``````````````````````````
+如果服务器在响应API调用期间出现错误，或者出现意料之外的情况，应返回该状态码。
 
 :term:`LinkRTC` 在许多情况下，会提供具体的错误编码以及错误信息，这些错误信息用 :term:`JSON` 对象格式存放在回复数据的内容部分。
 其中 ``code`` 属性记录错误编码， ``text`` 属性记录错误文本信息。
@@ -122,7 +123,8 @@ HTTP 状态码
   {"code": 10013, "text": "calee not allowed"}
 
 .. attention::
-  :term:`LinkRTC` 后台服务无法在所有情况下都提供 :term:`JSON` 格式错误信息，调用方可以根据 `Content-Type` 进行判断。
+  :term:`LinkRTC` 后台服务无法在所有情况下都提供 :term:`JSON` 格式错误信息。
+  调用方可以根据 :http:header:`Content-Type` 进行判断。
 
 其它
 `````````````

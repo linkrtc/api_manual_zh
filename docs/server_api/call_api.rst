@@ -1,10 +1,10 @@
-WebRTC 客户端 API
+呼叫 API
 ##################
 
-获取客户端列表
+获取呼叫列表
 ===============
 
-.. http:get:: /webrtcclient
+.. http:get:: /call
 
   获取 :class:`WebRtcClient` 实例列表
 
@@ -16,26 +16,3 @@ WebRTC 客户端 API
   :>header X-Pagination-Total-Entries: 总条目数
 
   :>jsonarr object: :datatype: :class:`WebRtcClient`
-
-获取客户端详情
-===============
-
-.. http:get:: /webrtcclient/(str:client_id)
-
-  获取一个 :class:`WebRtcClient` 实例的详情
-
-  :>json object: :datatype: :class:`WebRtcClient`
-
-新建客户端
-===========
-
-.. http:post:: /webrtcclient
-
-  新建一个 :class:`WebRtcClient` 实例
-
-删除客户端
-===========
-
-.. http:delete:: /webrtcclient/(str:client_id)
-
-  删除一个 :class:`WebRtcClient` 实例

@@ -1,3 +1,5 @@
+.. _label-proc-outgoing-call:
+
 呼出过程
 ###########
 
