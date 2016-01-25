@@ -5,6 +5,13 @@
 
 :term:`LinkRTC` 后台服务通过通知 API 将通知类型的消息数据 :http:method:`POST` 到用户的应用服务程序。
 
+.. digraph:: notify_api
+
+    a [label="api.linkrtc.com"]
+    b [label="http://your.app.com/your/script.php"]
+
+    a -> b [label="POST"]
+
 用户应用服务程序通过这些通知数据判断呼叫或者客户端的状态，以便对其进行控制。
 
 接收通知消息的 `URL` 通过 `用户控制台 <http://console.linkrtc.com/>`_ 设置。
