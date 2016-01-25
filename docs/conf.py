@@ -388,7 +388,7 @@ graphviz_output_format = 'svg'
 extensions.append('sphinxcontrib.httpdomain')
 from sphinx.domains.std import StandardDomain
 # http_index_shortname = u'api'
-http_index_localname = u'Restful Web API Path 索引'
+http_index_localname = u'Restful Web API 索引'
 def setup(app):
     StandardDomain.initial_data['labels']['routingtable'] = ('http-routingtable', '', http_index_localname)
     # StandardDomain.initial_data['anonlabels']['routingtable'] = ('http-routingtable', u'')

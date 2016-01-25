@@ -11,12 +11,3 @@
    WebRTC 客户端 API <webrtc_client_api>
    呼叫 API <call_api>
    数据结构定义 <datastructure>
-
-----
-
-**索引**
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-* :ref:`routingtable`

@@ -21,7 +21,7 @@
   Host: api.linkrtc.com
   Authorization: Basic UHJvamVjdDE6YWJjMTIz
 
-如果用户应用服务程序缺少或者没有提供正确 :http:header:`Authenticate` 信息，
+如果用户应用服务程序缺少或者没有提供正确 :http:header:`Authorization` 信息，
 :term:`LinkRTC` 将返回 :http:statuscode:`401` 。
 
 消息签名

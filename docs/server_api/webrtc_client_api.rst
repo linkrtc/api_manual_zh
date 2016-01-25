@@ -4,7 +4,7 @@ WebRTC 客户端 API
 获取客户端列表
 ===============
 
-.. http:get:: /webrtcclient
+.. http:get:: /sapi/webrtcclient
 
   获取 :class:`WebRtcClient` 实例列表
 
@@ -20,7 +20,7 @@ WebRTC 客户端 API
 获取客户端详情
 ===============
 
-.. http:get:: /webrtcclient/(str:client_id)
+.. http:get:: /sapi/webrtcclient/(str:client_id)
 
   获取一个 :class:`WebRtcClient` 实例的详情
 
@@ -29,13 +29,13 @@ WebRTC 客户端 API
 新建客户端
 ===========
 
-.. http:post:: /webrtcclient
+.. http:post:: /sapi/webrtcclient/create
 
   新建一个 :class:`WebRtcClient` 实例
 
 删除客户端
 ===========
 
-.. http:delete:: /webrtcclient/(str:client_id)
+.. http:post:: /sapi/webrtcclient/(str:client_id)/remove
 
   删除一个 :class:`WebRtcClient` 实例
