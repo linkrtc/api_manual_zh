@@ -45,7 +45,7 @@ HTTP 头和内容
 
 .. code-block:: http
 
-  POST /WebRtcClient HTTP/1.1
+  POST /sapi/WebRtcClient/create HTTP/1.1
   Host: api.linkrtc.com
   Content-Type: application/json; charset=utf-8
   Content-Length: xxx
@@ -68,7 +68,7 @@ HTTP 头和内容
 
   {
     "id": "5",
-    "token": "fg430mu3ojfg398u4",
+    "wskey": "fg430mu3ojfg398u4",
     "expires": 3600
   }
 
@@ -81,7 +81,7 @@ HTTP 头和内容
 
 .. code-block:: http
 
-  POST /ping HTTP/1.1
+  POST /sapi/ping HTTP/1.1
   Host: api.linkrtc.com
   Content-Length: 0
 

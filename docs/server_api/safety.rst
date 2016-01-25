@@ -17,7 +17,7 @@
 
 .. code-block:: http
 
-  GET /client/5 HTTP/1.1
+  GET /sapi/webrtcclient/5 HTTP/1.1
   Host: api.linkrtc.com
   Authorization: Basic UHJvamVjdDE6YWJjMTIz
 
@@ -54,7 +54,10 @@
   X-LinkRTC-Timestamp: 1453543759
   X-LinkRTC-Signature: E6E157A9FA805921DA12A86A40CC2A15
 
-  "... ..."
+  {
+    "type": "xxxx",
+    "data": "xxxx",
+  }
 
 签名算法
 -----------------
