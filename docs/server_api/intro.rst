@@ -45,7 +45,7 @@ HTTP 头和内容
 
 .. code-block:: http
 
-  POST /sapi/WebRtcClient/create HTTP/1.1
+  POST /sapi/webrtcclient/create HTTP/1.1
   Host: api.linkrtc.com
   Content-Type: application/json; charset=utf-8
   Content-Length: xxx
