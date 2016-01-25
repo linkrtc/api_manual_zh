@@ -2,26 +2,11 @@
 ##############
 在服务器API中，用 :term:`JSON` 对象格式记录各个实体的属性。
 
-本章节使用类定义的形式描述各个实体以及其属性的含义与数据类型。
+本章节使用类似 `Python` 语言类型定义的形式描述各个实体以及其属性的含义与数据类型。
 
-:term:`WebRTC` 客户端媒体能力
-=============================
+.. attention:: 事件通知数据的结构定义不在本章，具体请参见 :ref:`label-notify-api`
 
-.. class:: MediaCapability
-
-  .. attribute:: audio
-
-    是否具备音频能力
-
-    :datatype: ``bool``
-    :default: ``True``
-
-  .. attribute:: video
-
-    是否具备视频能力
-
-    :datatype: ``bool``
-    :default: ``False``
+.. module:: sapi
 
 :term:`WebRTC` 客户端
 =======================
@@ -42,11 +27,11 @@
 
     :datatype: ``str``
 
-  .. attribute:: capability
+  .. attribute:: wskey
 
-    媒体能力
+    客户端 :term:`WebSocket` 连接关键字
 
-    :datatype: :class:`MediaCapability`
+    :datatype: ``str``
 
 呼叫信息
 ==========
@@ -72,7 +57,7 @@
       呼出     `outgoing`
       ======== ================
 
-  .. attribute:: state
+  .. attribute:: current_state
 
     呼叫状态，详见 :ref:`label-proc-incoming-call` 与 :ref:`label-proc-outgoing-call`
 
@@ -87,3 +72,9 @@
       已接通       `confirmed`
       结束         `dropped`
       ============ ================
+
+  .. attribute:: prior_state
+
+    上一个状态，其属性值含义与 :attr:`Call.current_state` 一致。
+
+    .. note:: 当呼叫刚刚建立时，其当前状态 :attr:`Call.current_state` 为 `pending` ，其上一个状态值是 ``null`` 。
