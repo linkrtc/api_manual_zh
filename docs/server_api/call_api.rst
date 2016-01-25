@@ -6,7 +6,7 @@
 
 .. http:get:: /sapi/call
   
-  获取当前正在进行的呼叫 :class:`Call` 实例列表
+  获取当前正在进行的呼叫 :class:`sapi.Call` 实例列表
 
   :query int page: 要返回的页码。默认为1（1开始）。
   :query int perPage: 每页长度。如果不指定，服务器采用其默认设置。
@@ -17,7 +17,7 @@
 
   :>jsonarr object: 数组中，每个元素表示一个呼叫的信息。
 
-    :datatype: :class:`Call`
+    :datatype: :class:`sapi.Call`
 
 获取呼叫详情
 ===============
@@ -28,7 +28,7 @@
 
   :>json object: 该呼叫的详细信息。如果该 `call_id` 呼叫不存在，返回 `null`
   
-    :datatype: :class:`Call`
+    :datatype: :class:`sapi.Call`
 
 中断呼叫
 ===========
