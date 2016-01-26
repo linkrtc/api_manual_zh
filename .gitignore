@@ -142,3 +142,8 @@ $RECYCLE.BIN/
 
 # sftp configuration file
 sftp-config.json
+
+#####################################
+# AtomEditor.gitignore
+#####################################
+.atom-*
