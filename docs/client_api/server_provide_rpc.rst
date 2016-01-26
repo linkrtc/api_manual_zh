@@ -19,7 +19,7 @@
 
 **客户端调用：**
 
-.. sourcecode:: json
+.. code-block:: json
 
     {
         "jsonrpc": "2.0",
@@ -35,7 +35,7 @@
 
 **服务器回复：**
 
-.. sourcecode:: json
+.. code-block:: json
 
     {
         "jsonrpc": "2.0",

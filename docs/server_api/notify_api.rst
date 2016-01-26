@@ -32,7 +32,7 @@
 
 例如：
 
-.. sourcecode:: json
+.. code-block:: json
 
     {
         "type": "call.CallStateChanged",
@@ -68,7 +68,7 @@
 
 `ID` 为 `2341` 的入方向呼叫产生：
 
-.. sourcecode:: http
+.. code-block:: http
 
     POST /your/script.php HTTP/1.1
     Host: your.company.com
@@ -133,7 +133,7 @@
 
 `ID` 为 `sx3kerjs` 的 :term:`WebRTC` 客户端建立连接:
 
-.. sourcecode:: http
+.. code-block:: http
 
     POST /your/script.php HTTP/1.1
     Host: your.company.com

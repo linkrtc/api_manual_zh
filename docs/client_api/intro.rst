@@ -27,7 +27,7 @@ URL
 .. http:get:: /capi/project/(str:project_id)/rpc
 
     `project_id` :term:`WebRTC` 所属 :ref:`项目<label-account-project>` 的 `SID`
-  
+
     :query str key: 客户端连接密钥。
         用户应用程序服务器通过 :term:`WebRTC` 客户端对象 :attr:`sapi.WebRtcClient.wskey` 属性获取该密钥。
 
@@ -35,7 +35,7 @@ URL
 
 在浏览器上使用 `JavaScript` 建立 :term:`WebSocket` 连接：
 
-.. sourcecode:: js
+.. code-block:: js
 
     var projId = "your_project_sid";
     var wsKey = "your_client_wskey";
