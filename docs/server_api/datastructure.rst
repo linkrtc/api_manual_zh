@@ -86,5 +86,3 @@
   .. attribute:: to
 
     :datatype: ``str``
-
-
