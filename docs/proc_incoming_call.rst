@@ -76,8 +76,8 @@
 
   s1 -->> linkrtc [label="INVITE"];
   s1 <<-- linkrtc [label="TRYING"];
-  linkrtc -> webserver [label="incoming_call: to whom?"];
-  linkrtc <- webserver [label="return: to 'c1'"];
+  linkrtc -->> webserver [label="notify: incoming_call"];
+  webserver => linkrtc [label="command: switch to 'c1'"];
   ... continue ...
 
 .. rubric:: 呼入拒绝
@@ -88,9 +88,10 @@
 
   s1 -->> linkrtc [label="INVITE"];
   s1 <<-- linkrtc [label="TRYING"];
-  linkrtc -> webserver [label="incoming_call: to whom?"];
-  linkrtc <- webserver [label="return: refused!", color=red];
+  linkrtc -->> webserver [label="notify: incoming_call"];
+  webserver -> linkrtc [label="command: drop!", color=red];
   s1 <<-- linkrtc [label="403 Forbidden", color=red];
+  webserver <- linkrtc;
   ... break ...
 
 2. 呼叫客户端
@@ -119,7 +120,7 @@
   s1 <<-- linkrtc [label="TRYING"];
   linkrtc -->> webserver [label="notify: incoming call(from='x', to='y')"];
   ... wait ...
-  linkrtc <<-- webserver [label="notify: switch the call to 'c1'"];
+  linkrtc <<-- webserver [label="command: switch to 'c1'"];
   linkrtc -->> webserver [label="notify: state=calling"];
   linkrtc -->> c1 [label="incoming call: from='x', to='y'"];
   linkrtc <<-- webserver;
@@ -140,7 +141,7 @@
   s1 <<-- linkrtc [label="TRYING"];
   linkrtc -->> webserver [label="notify: incoming call(from='x', to='y')"];
   ... wait ...
-  linkrtc <<-- webserver [label="notify: switch the call to 'c1'"];
+  linkrtc <<-- webserver [label="command: switch to 'c1'"];
   linkrtc -->> webserver [label="notify: state=calling"];
   linkrtc -->> c1 [label="incoming call: from='x', to='y'", failed, color=red];
   linkrtc <<-- webserver;

@@ -59,22 +59,32 @@
 
   .. attribute:: current_state
 
-    呼叫状态，详见 :ref:`label-proc-incoming-call` 与 :ref:`label-proc-outgoing-call`
+    当前呼叫状态，详见 :ref:`label-proc-incoming-call` 与 :ref:`label-proc-outgoing-call`
 
     :datateype: str
     :value:
-      ============ ================
-      状态         表达式
-      ============ ================
-      待定         `incoming`
-      呼叫中       `calling`
-      等待应答     `ringing`
-      已接通       `confirmed`
-      结束         `dropped`
-      ============ ================
+      ==================== ==================================
+      **状态**              **表达式**
+      ==================== ==================================
+      待定                  ``pending``
+      呼叫中                ``calling``
+      等待应答              ``ringing``
+      已接通                ``confirmed``
+      结束                  ``dropped``
+      ==================== ==================================
 
   .. attribute:: prior_state
 
-    上一个状态，其属性值含义与 :attr:`Call.current_state` 一致。
+    上一个呼叫状态，其属性值含义与 :attr:`current_state` 一致。
 
-    .. note:: 当呼叫刚刚建立时，其当前状态 :attr:`Call.current_state` 为 `pending` ，其上一个状态值是 ``null`` 。
+    .. note:: 当呼叫刚刚建立时，其当前状态 :attr:`current_state` 为 `pending` ，:attr:`prior_state` 值是 ``null`` 。
+
+  .. attribute:: from
+
+    :datatype: ``str``
+
+  .. attribute:: to
+
+    :datatype: ``str``
+
+

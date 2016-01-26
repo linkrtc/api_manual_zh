@@ -75,8 +75,9 @@
   c1; appserver; linkrtc; s1;
 
   c1 -> linkrtc [label="make_call: from=x, to=y, target=s1"];
-  linkrtc -> appserver [label="is the call allowed?"];
-  linkrtc <- appserver [label="return: allowed"];
+  linkrtc -->> appserver [label="notify: call outgoing"];
+  ... wait ...
+  appserver => linkrtc [label="command: allowed"];
   c1 <- linkrtc [label="return: continue"];
   ... continue ...
 
@@ -87,8 +88,9 @@
   c1; appserver; linkrtc; s1;
 
   c1 -> linkrtc [label="make_call: from=x, to=y"];
-  linkrtc -> appserver [label="is the call allowed?"];
-  linkrtc <- appserver [label="return: refused", color=red];
+  linkrtc -->> appserver [label="notify: call outgoing"];
+  ... wait ...
+  appserver => linkrtc [label="command: disallowed!", color=red];
   c1 <- linkrtc [label="return: refused", color=red];
   ... break ...
 
