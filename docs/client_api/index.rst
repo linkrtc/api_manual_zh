@@ -7,12 +7,5 @@
    :maxdepth: 2
 
    介绍 <intro>
-
-----
-
-**索引**
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-* :ref:`routingtable`
+   服务器提供的远程方法 <server_provide_rpc>
+   WebRTC客户端远提供的程方法 <client_provide_rpc>

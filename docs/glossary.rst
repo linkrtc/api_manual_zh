@@ -9,6 +9,9 @@
   WebRTC
     见 http://webrtc.org/
 
+  WebSocket
+    见 https://tools.ietf.org/html/rfc6455
+
   SIP
     见 http://www.ietf.org/rfc/rfc3261.txt
 
@@ -29,6 +32,9 @@
 
   JSON
     见 http://www.json.org/
+
+  JSON-RPC
+    见 http://www.jsonrpc.org/specification
 
   Restful
     见 http://en.wikipedia.org/wiki/Representational_state_transfer
