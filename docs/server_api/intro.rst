@@ -34,9 +34,9 @@ HTTP 地址
 --------------
 用户应用服务程序调用 :term:`LinkRTC` 的 API 时候，URL 的路径部分的格式是::
 
-  /<API Version>/sapi/*
+  /<api_version>/sapi/*
 
-其中 `API Version` 是 :term:`LinkRTC` API 的版本，跨版本访问可能有兼容问题。
+其中 `api_version` 是 :term:`LinkRTC` API 的版本，跨版本访问可能有兼容问题。
 
 `sapi` 表示服务应用程序接口（ `Service Application Program Interface` ），所有的服务器API的访问路径均具有该部分。
 
@@ -91,7 +91,7 @@ HTTP 头和内容
 
 .. code-block:: http
 
-  POST /sapi/ping HTTP/1.1
+  POST /v0.1/sapi/ping HTTP/1.1
   Host: api.linkrtc.com
   Content-Length: 0
 
