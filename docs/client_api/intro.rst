@@ -24,12 +24,18 @@ URL
 
 :term:`WebRTC` 客户端访问这个 URL 建立 :term:`WebSocket` 连接：
 
-.. http:get:: /capi/project/(str:project_id)/rpc
+.. http:get:: /v0.1/capi/project/(str:project_id)/rpc
 
     `project_id` :term:`WebRTC` 所属 :ref:`项目<label-account-project>` 的 `SID`
 
     :query str key: 客户端连接密钥。
         用户应用程序服务器通过 :term:`WebRTC` 客户端对象 :attr:`sapi.WebRtcClient.wskey` 属性获取该密钥。
+
+.. note::
+
+  路径的第一部分 `v0.1` 是 :term:`LinkRTC` API 的版本，跨版本访问可能有兼容问题。
+
+  `capi` 表示客户端程序接口（ `Client Application Program Interface` ）。
 
 .. rubric:: 举例
 
@@ -39,7 +45,7 @@ URL
 
     var projId = "your_project_sid";
     var wsKey = "your_client_wskey";
-    var url = `wss://api.linkrtc.com/capi/project/${projId}/rpc?key=${wsKey}`;
+    var url = `wss://api.linkrtc.com/v0.1/capi/project/${projId}/rpc?key=${wsKey}`;
     var wsRpc = new WebSocket(url);
     wsRpc.addEventListener("readyState", (state) => {
         if (state == 0) {

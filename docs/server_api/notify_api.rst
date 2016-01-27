@@ -62,7 +62,7 @@
 
         状态发生变化的呼叫
 
-        :datatype: :class:`sapi.Call`               
+        :datatype: :class:`sapi.Call`
 
 .. rubric:: 举例:
 
@@ -86,7 +86,7 @@
                 "current_state": "pending",
                 "...": "... ..."
             }
-        }   
+        }
     }
 
 .. warning::
@@ -95,14 +95,14 @@
     `data` 部分的 :class:`sapi.Call` 对象的当前状态属性 :attr:`sapi.Call.current_state` 值为 `待定` (``pending``) ，
     且呼叫方向属性 :attr:`sapi.Call.dir` 值为 `出方向` (``outgoing``) 时，
     用户应用服务程序需要在呼叫超时或者被放弃之前调用
-    :http:post:`/sapi/call/(str:call_id)/allow`
+    :http:post:`/v0.1/sapi/call/(str:call_id)/allow`
     允许此次呼叫，方可使出方向呼叫继续进行。
 
 
     同理，当 `data` 部分的 :class:`sapi.Call` 对象的当前状态属性 :attr:`sapi.Call.current_state` 值为 `待定` (``pending``) ，
     且呼叫方向属性 :attr:`sapi.Call.dir` 值为 `入方向` (``incoming``) 时，
     用户应用服务程序需要在呼叫超时或者被放弃之前调用
-    :http:post:`/sapi/call/(str:call_id)/switch`
+    :http:post:`/v0.1/sapi/call/(str:call_id)/switch`
     允许此次呼叫，方可使入方向呼叫继续进行。
 
 
@@ -151,5 +151,5 @@
                 "..": "....",
                 "...": "... ..."
             }
-        }   
-    }   
+        }
+    }

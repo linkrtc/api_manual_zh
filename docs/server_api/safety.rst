@@ -17,7 +17,7 @@
 
 .. code-block:: http
 
-  GET /sapi/webrtcclient/5 HTTP/1.1
+  GET /v0.1/sapi/webrtcclient/5 HTTP/1.1
   Host: api.linkrtc.com
   Authorization: Basic UHJvamVjdDE6YWJjMTIz
 
@@ -48,7 +48,7 @@
 .. code-block:: http
 
   POST /your/script.php HTTP/1.1
-  Host: your.company.com
+  Host: your.app.com
   Content-Type: application/json; charset=utf-8
   Content-Length: xxx
   X-LinkRTC-Timestamp: 1453543759
