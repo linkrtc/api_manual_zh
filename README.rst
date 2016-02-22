@@ -4,13 +4,13 @@
 `Read the Docs`_ 构建状态:
 
 .. image:: https://readthedocs.org/projects/linrtc-api-manual-zh/badge/?version=latest
-  :target: http://linrtc-api-manual-zh.readthedocs.org/en/latest/?badge=latest
+  :target: http://linrtc-api-manual-zh.readthedocs.org/latest/?badge=latest
 
 .. image:: https://readthedocs.org/projects/linrtc-api-manual-zh/badge/?version=master
-  :target: http://linrtc-api-manual-zh.readthedocs.org/en/latest/?badge=master
+  :target: http://linrtc-api-manual-zh.readthedocs.org/latest/?badge=master
 
 .. image:: https://readthedocs.org/projects/linrtc-api-manual-zh/badge/?version=develop
-  :target: http://linrtc-api-manual-zh.readthedocs.org/en/latest/?badge=develop
+  :target: http://linrtc-api-manual-zh.readthedocs.org/latest/?badge=develop
 
 -------------
 目的
