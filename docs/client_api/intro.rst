@@ -13,8 +13,9 @@
 ==========
 
 1. 使用经过SSL/TLS加密的 :term:`WebRTC` (即 `wss`)建立连接。
-2. 采用远程方法调用通信模式，遵照 :term:`JSON-RPC` 2.0 标准。
+2. 采用远程方法调用通信模式，遵照 :term:`JSON-RPC` 2.0 标准，但是不支持批处理模式。
 3. 双方均可双向调用。
+4. 服务器同一时间只响应一个客户端的一个调用。
 
 格式规范
 ==========
@@ -47,11 +48,30 @@ URL
     var wsKey = "your_client_wskey";
     var url = `wss://api.linkrtc.com/v0.1/capi/project/${projId}/rpc?key=${wsKey}`;
     var wsRpc = new WebSocket(url);
+    /**
+    * RPC's response
+    */
+    wsRpc.addEventListener('onmessage', (event) => {
+        var data = JSON.parse(event.data);
+        /// "id" is RPC's id
+        id = data.id;
+        /// "result" is RPC's returned result
+        result = data.result;
+    });
     wsRpc.addEventListener("readyState", (state) => {
         if (state == 0) {
             console.log("CONNECTING");
         } else if (state == 1) {
             console.log("OPEN");
+            /**
+            * Send JSON-RPC
+            */
+            wsRpc.send(JSON.stringify({
+              jsonrpc: '2.0',
+              id: 'Unique-RPC-ID',
+              method: 'name_of_method',
+              params: ['param0', 'param1', 'param2', 'param3'],
+            }))
         } else if (state == 2) {
             console.log("CLOSING");
         } else if (state == 3) {

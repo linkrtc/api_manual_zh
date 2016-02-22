@@ -47,7 +47,7 @@
         }
     }
 
-本节文档使用面向对象语言类型定义的伪代码形式，描述通知消息的 `data` 部分。
+本节文档使用面向对象语言类型定义的伪代码形式，描述通知消息 `data` 部分的数据结构。
 
 .. module:: sapi.event
 
@@ -58,11 +58,11 @@
 
 .. class:: CallStateChanged
 
-    .. attribute:: call
+  .. attribute:: call
 
-        状态发生变化的呼叫
+    状态发生变化的呼叫
 
-        :datatype: :class:`sapi.Call`
+    :rtype: sapi.Call
 
 .. rubric:: 举例:
 
@@ -121,13 +121,13 @@
         * ``true``: 连接建立
         * ``false``: 连接断开
 
-        :datatype: ``bool``
+        :rtype: bool
 
     .. attribute:: client
 
         连接状态发生变化的客户端
 
-        :datatype: :class:`sapi.WebRtcClient`
+        :rtype: sapi.WebRtcClient
 
 .. rubric:: 举例:
 
