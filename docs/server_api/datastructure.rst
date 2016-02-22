@@ -19,19 +19,19 @@
 
     客户端ID
 
-    :datatype: ``str``
+    :rtype: str
 
   .. attribute:: project
 
     该客户端所属的 :ref:`项目<label-account-project>` 的 `SID`
 
-    :datatype: ``str``
+    :rtype: str
 
   .. attribute:: wskey
 
     客户端 :term:`WebSocket` 连接关键字
 
-    :datatype: ``str``
+    :rtype: str
 
 呼叫信息
 ==========
@@ -42,14 +42,15 @@
 
     呼叫ID
 
-    :datatype: str
+    :rtype: str
 
   .. attribute:: dir
 
     呼叫方向
 
-    :datateype: str
-    :value:
+    :rtype: str
+
+    定义:
       ======== ================
       方向      表达式
       ======== ================
@@ -61,8 +62,9 @@
 
     当前呼叫状态，详见 :ref:`label-proc-incoming-call` 与 :ref:`label-proc-outgoing-call`
 
-    :datateype: str
-    :value:
+    :rtype: str
+
+    定义:
       ==================== ==================================
       **状态**              **表达式**
       ==================== ==================================
@@ -77,12 +79,14 @@
 
     上一个呼叫状态，其属性值含义与 :attr:`current_state` 一致。
 
+    :rtype: str
+
     .. note:: 当呼叫刚刚建立时，其当前状态 :attr:`current_state` 为 `pending` ，:attr:`prior_state` 值是 ``null`` 。
 
   .. attribute:: from
 
-    :datatype: ``str``
+    :rtype: str
 
   .. attribute:: to
 
-    :datatype: ``str``
+    :rtype: str
