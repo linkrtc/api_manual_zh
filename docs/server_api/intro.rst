@@ -55,17 +55,17 @@ HTTP 头和内容
 
 .. code-block:: http
 
-  POST /v0.l/sapi/webrtcclient/create HTTP/1.1
+  POST /v0.l/sapi/client/create HTTP/1.1
   Host: api.linkrtc.com
   Content-Type: application/json; charset=utf-8
   Content-Length: xxx
 
   {
+    "name": "client-01",
     "capability": {
       "audio": true,
       "video": false
-    },
-    "userData": "client-01"
+    }
   }
 
 `api.linkrtc.com` 的回复：
@@ -77,9 +77,7 @@ HTTP 头和内容
   Content-Length: xxx
 
   {
-    "id": "5",
-    "wskey": "fg430mu3ojfg398u4",
-    "expires": 3600
+    "id": "fg430mu3ojfg398u4"
   }
 
 空请求与回复

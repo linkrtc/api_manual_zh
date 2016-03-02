@@ -1,0 +1,20 @@
+{
+  "name": "sphinx-doc default make",
+  "cmd": "env/Scripts/activate.bat &; cd docs &; make html",
+
+  "targets": {
+    "auto build": {
+      "cmd": "env/Scripts/activate.bat &; sphinx-autobuild -b html -B docs docs/_build/html"
+    },
+    "make html": {
+      "cmd": "env/Scripts/activate.bat &; cd docs &; make html"
+    },
+    "make clean": {
+      "cmd": "env/Scripts/activate.bat &; cd docs &; make clean"
+    },
+    "make clean and html": {
+      "cmd": "env/Scripts/activate.bat &; cd docs &; make clean &; make html"
+    }
+  }
+
+}

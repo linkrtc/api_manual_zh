@@ -4,7 +4,7 @@
 获取呼叫列表
 ===============
 
-.. http:get:: /v0.1/sapi/call
+.. http:post:: /v0.1/sapi/Call/list
 
   获取当前正在进行的呼叫 :class:`sapi.Call` 实例列表
 
@@ -19,42 +19,34 @@
 获取呼叫详情
 ===============
 
-.. http:get:: /v0.1/sapi/call/(str:call_id)/detail
+.. http:post:: /v0.1/sapi/Call/detail
 
-  获取 `ID` 为 `call_id` 的呼叫的详情。
-
+  :<json str id: `call_id`
   :>json data: 呼叫详细信息( :class:`sapi.Call` 对象)。如果该 `call_id` 呼叫不存在，返回 `null`。
 
 中断呼叫
 ===========
 
-.. http:post:: /v0.1/sapi/call/(str:call_id)/drop
+.. http:post:: /v0.1/sapi/Call/drop
 
-    中断 `ID` 为 `call_id` 的呼叫，无论它处于什么状态。
+    :<json str id: 中断该 `id` 呼叫，无论它处于什么状态。
 
-出方向呼叫的允许/禁止
-=====================
-
-.. http:post:: /v0.1/sapi/call/(str:call_id)/allow
-
-    允许/禁止 `ID` 为 `call_id` 的出方向呼叫
-
-    :<json bool allowd: 是否允许
-
-    详见 :ref:`label-proc-outgoing-call`
-
-    .. attention:: 仅对 **出方向** 呼叫有效
-
-入方向呼叫交换到客户端
+呼叫交换
 ======================
 
-.. http:post:: /v0.1/sapi/call/(str:call_id)/switch
+.. http:post:: /v0.1/sapi/Call/switch
 
-    将入方向呼叫交换到指定的客户端
+    :<json str id: `Call ID`
 
-    :<json str client_type: 客户端类型，目前仅支持 :term:`WebRtc`
-    :<json str client_id: 客户端 `ID`
+    :<json str dest: 交换目标
 
-    详见 :ref:`label-proc-incoming-call`
+        * 如果目标是 :term:`SIP` 端点，该属性应是 :term:`SIP` URL 表达式；
+        * 如果目标是 :term:`WebRTC` 客户端，该属性表达式是：
+          ``linkrtc-client:<client_name>@<project_name>``
 
-    .. attention:: 仅对 **入方向** 呼叫有效
+    .. note::
+      目前只能将 :term:`SIP` 端点发起的呼叫交换到 :term:`WebRTC` 客户端，
+      详见 :ref:`label-proc-incoming-call`
+
+      或者将 :term:`WebRTC` 客户端发起的呼叫交换到 :term:`SIP` 端点，
+      详见 :ref:`label-proc-outgoing-call`

@@ -11,25 +11,19 @@
 :term:`WebRTC` 客户端
 =======================
 
-.. class:: WebRtcClient
+.. class:: Client
 
   该数据结构用于记录一个 :term:`WebRTC` 客户端实例的相关信息。
 
   .. attribute:: id
 
-    客户端ID
-
-    :rtype: str
-
-  .. attribute:: project
-
-    该客户端所属的 :ref:`项目<label-account-project>` 的 `SID`
-
-    :rtype: str
-
-  .. attribute:: wskey
-
     客户端 :term:`WebSocket` 连接关键字
+
+    :rtype: str
+
+  .. attribute:: name
+
+    客户端名称
 
     :rtype: str
 

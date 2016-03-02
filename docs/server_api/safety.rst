@@ -12,17 +12,29 @@
 用户应用服务程序向 :term:`LinkRTC` 发送的请求需要提供 :term:`HTTP Basic Authentication` （`HTTP` 基本认证）信息。
 :term:`LinkRTC` 根据认证信息中的用户名和密码对调用者进行身份认证。
 
-例如，某用户在 :term:`LinkRTC` 拥有一个 `SID` 为 ``Project1`` 的 :ref:`项目<label-account-project>` ，
-该项目的访问密码是 ``abc123``，那么，用户应用服务程序发送的 `HTTP` 请求 **必须** 带有正确的 :http:header:`Authorization` 头：
+如果用户应用服务程序缺少或者没有提供正确 :http:header:`Authorization` 信息，
+:term:`LinkRTC` 将返回 :http:statuscode:`401` 。
+
+.. attention:: 由于项目的访问密码以 `MD5` 散列形式存放在系统中，所以，进行验证时，密码应使用 `MD5` 散列后的字符串。
+
+例如，某用户在 :term:`LinkRTC` 拥有一个 `name` 为 ``Project1`` 的 :ref:`项目<label-account-project>` ，
+该项目的访问密码是 ``abc123``，:http:header:`Authorization` 头域的字符串值的算法可用以下伪代码描述::
+
+  name = b"Project1"
+  password = b"abc123"
+  txt = name + b":" + md5(password).hexdigest().encode()
+  txt_enc = b64encode(txt)
+
+上面的伪代码得到结果 `UHJvamVjdDE6ZTk5YTE4YzQyOGNiMzhkNWYyNjA4NTM2Nzg5MjJlMDM=`
+
+用户应用服务程序发送的 `HTTP` 请求 **必须** 带有正确的 :http:header:`Authorization` 头：
 
 .. code-block:: http
 
   GET /v0.1/sapi/webrtcclient/5 HTTP/1.1
   Host: api.linkrtc.com
-  Authorization: Basic UHJvamVjdDE6YWJjMTIz
+  Authorization: Basic UHJvamVjdDE6ZTk5YTE4YzQyOGNiMzhkNWYyNjA4NTM2Nzg5MjJlMDM=
 
-如果用户应用服务程序缺少或者没有提供正确 :http:header:`Authorization` 信息，
-:term:`LinkRTC` 将返回 :http:statuscode:`401` 。
 
 消息签名
 ===========

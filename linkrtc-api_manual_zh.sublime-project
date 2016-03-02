@@ -1,0 +1,51 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "make clean",
+			"working_dir": "${project_path}",
+			"windows": {
+				"cmd": [
+					"env\\Scripts\\activate", "&;",
+					"cd", "docs", "&;",
+					"make", "clean"
+				],
+				"shell": true,
+				"encoding": "gbk"
+			}
+		},
+		{
+			"name": "make html",
+			"working_dir": "${project_path}",
+			"windows": {
+				"cmd": [
+					"env\\Scripts\\activate", "&;",
+					"cd", "docs", "&;",
+					"make", "html"
+				],
+				"shell": true,
+				"encoding": "gbk"
+			}
+		},
+		{
+			"name": "re-make html",
+			"working_dir": "${project_path}",
+			"windows": {
+				"cmd": [
+					"env\\Scripts\\activate", "&;",
+					"cd", "docs", "&;",
+					"make", "clean", "&;",
+					"make", "html"
+				],
+				"shell": true,
+				"encoding": "gbk"
+			}
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	]
+}
